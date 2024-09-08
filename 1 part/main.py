@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 files = []
 
-def list_all_files(path=Path('.')):
+def list_all_files(path=Path('..')):
     for entry in path.iterdir():
         if entry.is_file():
             files.append(entry)
@@ -13,7 +13,7 @@ def list_all_files(path=Path('.')):
 
 
 def sorting_files(file):
-    dict_path = Path('dict')
+    dict_path = Path('1 part/dict')
     dict_path.mkdir(exist_ok=True)
     for file in files:
         file_extension = file.suffix[1:]
@@ -26,7 +26,7 @@ def multi_thread(files):
         executor.map(sorting_files, files)
 
 if __name__ == '__main__':
-    directory_path = Path('./picture')
+    directory_path = Path('1 part/picture')
     list_all_files(directory_path)
     multi_thread(files)
 
